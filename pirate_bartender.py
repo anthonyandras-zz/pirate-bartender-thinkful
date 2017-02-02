@@ -1,5 +1,6 @@
 import random
 
+names = ['Sea-Dog', 'Hook', 'Multi-Eyed', 'Legless', 'Theif']
 
 questions = {
         "strong": "Do ye like yer drinks strong?",
@@ -17,6 +18,9 @@ ingredients = {
         "fruity": ["slice of orange", "dash of cassis", "cherry on top"],
 }
 
+def get_name():
+    return random.choice(names) + ' ' + random.choice(names)
+
 def ask_questions():
     responses = {}
     for question in questions:
@@ -33,7 +37,10 @@ def construct_drink(responses):
    return drink
 
 if __name__ == '__main__':
-    drink = construct_drink(ask_questions())
-    print(", ".join(random.choice(drink)))
+    another_drink = 'yes'
+    while another_drink == 'yes':
+        drink = construct_drink(ask_questions())
+        print(get_name()+':',  ", ".join(random.choice(drink)))
+        another_drink = input('Would you like another drink? ')
     
     
